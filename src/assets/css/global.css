@@ -1,0 +1,74 @@
+@font-face {
+  font-family: bungee;
+  src: url("../fonts/Bungee-Regular.ttf");
+}
+
+@font-face {
+  font-family: hind_reg;
+  src: url("../fonts/HindSiliguri-Regular.ttf");
+}
+
+:root {
+  --bg-color: #313131;
+  --bg-color-hover: #302c2c;
+  --main-color: #f66e0d;
+  --main-color-hover: #c25b12;
+  --sub-color: #616161;
+  --text-color: #f5e6c8;
+}
+
+.light_theme {
+  --bg-color: #fff;
+  --bg-color-hover: rgb(241, 234, 234);
+  --main-color: #40d672;
+  --main-color-hover: #2cbd5c;
+  --sub-color: #d5d5d5;
+  --text-color: #1d221f;
+
+  --defaultBlack: #1d221f;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: bungee;
+  color: var(--text-color);
+}
+
+p,
+a,
+li,
+small {
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1700px;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .page_padding {
+    padding: 70px 0px;
+    background-color: var(--bg-color);
+  }
+}
