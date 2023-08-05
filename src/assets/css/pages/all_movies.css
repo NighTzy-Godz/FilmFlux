@@ -1,0 +1,19 @@
+@media screen and (min-width: 1200px) {
+  .all_movies_container {
+    display: flex;
+  }
+  .all_movies .filter {
+    background-color: rebeccapurple;
+    width: 15%;
+  }
+
+  .all_movies .movies_container {
+    width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .all_movies .movies_container .column {
+    width: 25%;
+  }
+}
