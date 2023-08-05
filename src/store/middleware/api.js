@@ -19,7 +19,7 @@ const api =
 
     const requests = urls.map((url) => {
       const config = {
-        baseUrl: BASE_URL,
+        baseURL: BASE_URL,
         url,
         params: queryParams,
       };
@@ -33,9 +33,13 @@ const api =
 
     try {
       const responses = await Promise.all(requests);
+
       const responseData = responses.map((response) => response.data);
+
       dispatch(actions.apiCallSuccess(responseData));
-      if (onSuccess) dispatch({ typeof: onSuccess, payload: responseData });
+      if (onSuccess) {
+        dispatch({ type: onSuccess, payload: responseData });
+      }
     } catch (error) {
       dispatch(actions.apiCallFailed(error.message));
       if (onError) dispatch({ type: onError, payload: error.message });

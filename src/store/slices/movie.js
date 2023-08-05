@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { apiCallBegan } from "../actions/apiActions";
 
 const slice = createSlice({
   name: "movie",
@@ -6,10 +7,6 @@ const slice = createSlice({
     movieList: [],
     loading: false,
     singleMovie: {},
-    filters: {
-      genreId: "",
-      sort,
-    },
   },
   reducers: {
     moviesRequested: (movie, action) => {
@@ -33,3 +30,11 @@ const { moviesRequested, moviesRequestFailed, movieListRecieved } =
 export default slice.reducer;
 
 const movieUrl = "/movie";
+
+export const getPopularMovies = () =>
+  apiCallBegan({
+    urls: [`${movieUrl}/popular`],
+    onStart: moviesRequested.type,
+    onSuccess: movieListRecieved.type,
+    onError: moviesRequestFailed.type,
+  });
