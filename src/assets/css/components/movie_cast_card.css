@@ -1,0 +1,29 @@
+@media screen and (min-width: 1200px) {
+  .cast_card {
+    width: 180px;
+    border-radius: 8px;
+    background-color: var(--bg-color-hover);
+  }
+
+  .cast_card img {
+    width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .cast_card_details {
+    padding: 10px;
+  }
+
+  .cast_card_details h4 {
+    font-family: bungee;
+    font-size: 18px;
+    color: var(--main-color);
+  }
+
+  .cast_card_details p {
+    color: var(--text-color);
+    font-family: hind_reg;
+    font-size: 15px;
+  }
+}

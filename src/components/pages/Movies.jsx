@@ -28,6 +28,9 @@ function Movies() {
   return (
     <PagePadding className="all_movies">
       <WidthContainer>
+        <div className="title">
+          <h1>Discover All Movies</h1>
+        </div>
         <div className="all_movies_container">
           <div className="filter">
             <h3>Filter HEre</h3>

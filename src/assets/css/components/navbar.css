@@ -1,7 +1,9 @@
 @media screen and (min-width: 1200px) {
   .navbar {
-    background-color: var(--bg-color);
-    padding: 10px 0px;
+    background-color: var(--bg-color) !important;
+    padding: 10px 0;
+    box-shadow: 0 0 20px -10px hsla(0, 0%, 59%, 0.2),
+      0 0 1px 1px hsla(0, 0%, 49%, 0.2);
   }
 
   .navbar .logo {
@@ -30,6 +32,11 @@
 
   .navbar .nav_links a {
     font-size: 20px;
+    transition: all 0.3s;
+  }
+
+  .navbar .nav_links a:hover {
+    color: var(--main-color);
   }
 
   .navbar .nav_links a.active {

@@ -1,4 +1,9 @@
 @media screen and (min-width: 1200px) {
+  .all_movies .title h1 {
+    color: var(--main-color);
+    margin-bottom: 30px;
+  }
+
   .all_movies_container {
     display: flex;
   }

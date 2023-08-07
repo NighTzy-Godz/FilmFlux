@@ -24,7 +24,7 @@ function Navbar() {
     <BoxShadow className="navbar">
       <WidthContainer>
         <FlexCombo>
-          <Link className="logo">
+          <Link className="logo" to="/">
             <img src={LOGO} alt="" />
             <h1>FilmFlux</h1>
           </Link>
