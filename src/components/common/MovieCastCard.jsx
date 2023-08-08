@@ -9,7 +9,7 @@ function MovieCastCard({ data }) {
 
   return (
     <div className="cast_card mb-4">
-      <Link to={`/person/${id}`}>
+      <Link to={`/people/${id}`}>
         <img src={`${profile_poster_path + profile_path}`} alt="" />
       </Link>
 
