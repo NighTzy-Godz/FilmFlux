@@ -21,7 +21,7 @@ function Navbar() {
   };
 
   return (
-    <BoxShadow className="navbar">
+    <div className="navbar">
       <WidthContainer>
         <FlexCombo>
           <Link className="logo" to="/">
@@ -47,7 +47,7 @@ function Navbar() {
           </SearchBarContainer>
         </FlexCombo>
       </WidthContainer>
-    </BoxShadow>
+    </div>
   );
 }
 

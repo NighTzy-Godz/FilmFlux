@@ -2,8 +2,7 @@
   .navbar {
     background-color: var(--bg-color) !important;
     padding: 10px 0;
-    box-shadow: 0 0 20px -10px hsla(0, 0%, 59%, 0.2),
-      0 0 1px 1px hsla(0, 0%, 49%, 0.2);
+    border-bottom: 0.5px solid var(--main-color);
   }
 
   .navbar .logo {

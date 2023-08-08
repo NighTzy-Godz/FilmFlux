@@ -1,11 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../common/Navbar";
+import BoxShadow from "../containers/BoxShadow";
 
-function HomeLayout(props) {
+function HomeLayout() {
   return (
     <React.Fragment>
       <Navbar />
+
       <Outlet />
     </React.Fragment>
   );

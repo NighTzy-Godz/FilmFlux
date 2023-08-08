@@ -1,14 +1,20 @@
 import React from "react";
 import PagePadding from "../containers/PagePadding";
 import WidthContainer from "../containers/WidthContainer";
+import BoxShadow from "../containers/BoxShadow";
+import Navbar from "../common/Navbar";
 
 function Home(props) {
   return (
-    <PagePadding className="home">
-      <WidthContainer>
-        <h1>I am the Home</h1>
-      </WidthContainer>
-    </PagePadding>
+    <React.Fragment>
+      {/* <BoxShadow>
+        <Navbar />
+      </BoxShadow> */}
+
+      <div className="home">
+        <h1>Hi</h1>
+      </div>
+    </React.Fragment>
   );
 }
 
