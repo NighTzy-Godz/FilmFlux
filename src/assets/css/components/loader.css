@@ -1,7 +1,4 @@
 @media screen and (min-width: 1200px) {
-  .loading_container {
-  }
-
   .loader {
     /* color of choise */
     --clr: var(--main-color);

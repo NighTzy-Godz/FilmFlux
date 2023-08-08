@@ -16,6 +16,7 @@
     width: 85%;
     display: flex;
     flex-wrap: wrap;
+    padding: 0 1rem;
   }
 
   .all_movies .movies_container .column {

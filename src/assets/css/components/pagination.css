@@ -1,0 +1,24 @@
+@media screen and (min-width: 1200px) {
+  .pagination_container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .pagination_container .paginate {
+    display: flex;
+  }
+
+  .pagination_container .paginate li {
+    margin: 0px 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  .pagination_container .paginate li.active {
+    background-color: var(--main-color);
+    border: 1px solid var(--main-color);
+    border-radius: 3px;
+  }
+}

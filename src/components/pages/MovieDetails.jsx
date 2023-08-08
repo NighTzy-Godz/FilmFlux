@@ -29,7 +29,7 @@ function MovieDetails() {
   const dispatch = useDispatch();
   const movieReducer = useSelector((state) => state?.entities?.movies);
   const { loading } = movieReducer;
-  console.log(loading);
+
   const movieDetails = movieReducer?.singleMovie;
 
   const {

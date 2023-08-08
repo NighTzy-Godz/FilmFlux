@@ -64,3 +64,12 @@ export const getMovieDetails = (movieId) =>
     onSuccess: movieDetailsRecieved.type,
     onError: moviesRequestFailed.type,
   });
+
+export const getMoviesNextPage = (params) =>
+  apiCallBegan({
+    urls: [`discover/${movieUrl}`],
+    params,
+    onStart: moviesRequested.type,
+    onSuccess: movieListRecieved.type,
+    onError: moviesRequestFailed.type,
+  });
