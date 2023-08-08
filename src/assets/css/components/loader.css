@@ -1,17 +1,28 @@
 @media screen and (min-width: 1200px) {
+  .loading_container {
+    background-color: var(--bg-color);
+    height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   .loader {
     /* color of choise */
+    width: 100%;
     --clr: var(--main-color);
     /* loading time of choice */
-    --load-time: 2s;
-    outline: 5px solid var(--clr);
-    outline-offset: 5px;
+    --load-time: 1s;
+    outline: 2px solid var(--clr);
+    outline-offset: 2px;
     position: relative;
     overflow: hidden;
     border-radius: 5rem;
     /* width: 10rem; */
     /* height: 2rem; */
-    padding: 1rem 5rem;
+    padding: 10px 5rem;
     /* use either padding or width + height*/
     /* I prefer the padding one */
     /* rotate: -90deg; */
