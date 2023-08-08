@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 const useMovieRecommendation = (recommendations) => {
   const [movieRecommendation, setMovieRecommendation] = useState([]);
 
-  console.log(recommendations);
-
   useEffect(() => {
     if (recommendations) {
       let arrRecommendation = [];

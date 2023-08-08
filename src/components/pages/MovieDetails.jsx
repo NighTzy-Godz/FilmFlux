@@ -16,6 +16,7 @@ import formatDate from "../../utils/formatDate";
 import formatCurrency from "../../utils/formatCurrency";
 import MovieRecomCard from "../common/MovieRecomCard";
 import useMovieRecommendation from "../../hooks/useMovieRecommendation";
+import Loader from "../common/Loader";
 
 const BACK_DROP_BASE_IMG = "https://image.tmdb.org/t/p/original/";
 const POSTER_BASE_IMG = "https://image.tmdb.org/t/p/original/";
@@ -26,9 +27,10 @@ function MovieDetails() {
 
   const { movieId } = useParams();
   const dispatch = useDispatch();
-  const movieDetails = useSelector(
-    (state) => state?.entities?.movies?.singleMovie
-  );
+  const movieReducer = useSelector((state) => state?.entities?.movies);
+  const { loading } = movieReducer;
+  console.log(loading);
+  const movieDetails = movieReducer?.singleMovie;
 
   const {
     backdrop_path,
@@ -107,6 +109,8 @@ function MovieDetails() {
     dispatch(getMovieDetails(movieId));
     window.scrollTo(0, 0);
   }, [movieId]);
+
+  if (loading) return <Loader />;
 
   return (
     <React.Fragment>
