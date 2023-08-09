@@ -13,7 +13,7 @@ function useSearchSnippetResult(searchResults) {
       (result) => result.poster_path
     );
 
-    setSnippetResult(filteredResults.slice(0, 6));
+    setSnippetResult(filteredResults);
   }, [searchResults]);
 
   return { snippetResult };

@@ -1,6 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getMoviesNextPage, getPopularMovies } from "../../store/slices/movie";
+import {
+  getFilteredMovie,
+  getMoviesNextPage,
+  getPopularMovies,
+} from "../../store/slices/movie";
 import PagePadding from "../containers/PagePadding";
 import WidthContainer from "../containers/WidthContainer";
 import MovieCard from "../common/MovieCard";
@@ -11,8 +15,15 @@ import "../../assets/css/components/pagination.css";
 import ReactPaginate from "react-paginate";
 import calculateItems from "../../utils/calculateItems";
 
+import Filter from "../common/Filter";
+
 const PAGE_SIZE = 20;
+
 function Movies() {
+  const [params, setParams] = useState({
+    sort_by: "popularity.desc",
+  });
+
   const dispatch = useDispatch();
   const movieReducer = useSelector(
     (state) => state?.entities?.movies?.movieList
@@ -41,6 +52,14 @@ function Movies() {
     dispatch(getMoviesNextPage({ page }));
   };
 
+  const handleDropDownChange = (e) => {
+    setParams({ ...params, sort_by: e.currentTarget.value });
+  };
+
+  const handleFilterClick = () => {
+    dispatch(getFilteredMovie(params));
+  };
+
   useEffect(() => {
     dispatch(getPopularMovies());
   }, []);
@@ -52,9 +71,10 @@ function Movies() {
           <h1>Discover Latest Movies</h1>
         </div>
         <div className="all_movies_container">
-          <div className="filter">
-            <h3>Filter HEre</h3>
-          </div>
+          <Filter
+            onDropDownChange={handleDropDownChange}
+            onFilterClick={handleFilterClick}
+          />
           <div className="movies_container">
             {renderMovieCards}
             <div className="pagination_container">

@@ -8,11 +8,4 @@
     overflow-y: auto;
     max-height: 300px;
   }
-
-  .search_snippet .show_all_results {
-    padding: 8px;
-    text-align: center;
-    font-size: 14px;
-    display: block;
-  }
 }

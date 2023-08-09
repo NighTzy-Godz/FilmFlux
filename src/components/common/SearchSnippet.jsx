@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import SearchSnippetCard from "./SearchSnippetCard";
 import "../../assets/css/components/search_snippet.css";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchSnippet } from "../../store/slices/movie";
 
@@ -39,7 +38,6 @@ function SearchSnippet({ searchResult }) {
   return (
     <div className="search_snippet" ref={searchSnippetRef}>
       {renderSearchCard}
-      <Link className="show_all_results">Show All Results</Link>
     </div>
   );
 }

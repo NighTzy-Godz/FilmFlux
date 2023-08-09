@@ -38,6 +38,11 @@ const slice = createSlice({
       movie.searchResults = action.payload[0];
     },
 
+    movieFilteredRecieved: (movie, action) => {
+      movie.loading = false;
+      movie.movieList = action.payload[0];
+    },
+
     setSearchSnippet: (movie, action) => {
       movie.searchSnippetToggle = action.payload;
     },
@@ -52,6 +57,7 @@ const {
   movieListRecieved,
   movieDetailsRecieved,
   movieSearchedRecieved,
+  movieFilteredRecieved,
 } = slice.actions;
 
 export default slice.reducer;
@@ -95,5 +101,14 @@ export const getSearchedMovie = (searchTerm) =>
     params: { query: searchTerm },
 
     onSuccess: movieSearchedRecieved.type,
+    onError: moviesRequestFailed.type,
+  });
+
+export const getFilteredMovie = (params) =>
+  apiCallBegan({
+    urls: [`/discover/${movieUrl}`],
+    params,
+    onStart: moviesRequested.type,
+    onSuccess: movieFilteredRecieved.type,
     onError: moviesRequestFailed.type,
   });
