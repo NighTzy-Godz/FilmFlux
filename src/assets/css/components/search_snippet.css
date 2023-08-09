@@ -1,0 +1,18 @@
+@media screen and (min-width: 1200px) {
+  .search_snippet {
+    position: absolute;
+    width: 100%;
+    background-color: var(--bg-color-hover);
+    border-radius: 5px;
+    margin-top: 3px;
+    overflow-y: auto;
+    max-height: 300px;
+  }
+
+  .search_snippet .show_all_results {
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+    display: block;
+  }
+}

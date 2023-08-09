@@ -7,6 +7,9 @@ const slice = createSlice({
     movieList: [],
     loading: false,
     singleMovie: {},
+    searchResults: [],
+    searchTerm: "",
+    searchSnippetToggle: false,
   },
   reducers: {
     moviesRequested: (movie, action) => {
@@ -29,14 +32,26 @@ const slice = createSlice({
       movie.singleMovie.recommendations = action.payload[2];
       movie.singleMovie.socials = action.payload[3];
     },
+
+    movieSearchedRecieved: (movie, action) => {
+      movie.loading = false;
+      movie.searchResults = action.payload[0];
+    },
+
+    setSearchSnippet: (movie, action) => {
+      movie.searchSnippetToggle = action.payload;
+    },
   },
 });
+
+export const { setSearchSnippet } = slice.actions;
 
 const {
   moviesRequested,
   moviesRequestFailed,
   movieListRecieved,
   movieDetailsRecieved,
+  movieSearchedRecieved,
 } = slice.actions;
 
 export default slice.reducer;
@@ -71,5 +86,14 @@ export const getMoviesNextPage = (params) =>
     params,
     onStart: moviesRequested.type,
     onSuccess: movieListRecieved.type,
+    onError: moviesRequestFailed.type,
+  });
+
+export const getSearchedMovie = (searchTerm) =>
+  apiCallBegan({
+    urls: [`/search/movie`],
+    params: { query: searchTerm },
+
+    onSuccess: movieSearchedRecieved.type,
     onError: moviesRequestFailed.type,
   });
