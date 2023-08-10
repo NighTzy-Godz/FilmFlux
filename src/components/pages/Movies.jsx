@@ -23,6 +23,8 @@ import Column from "../containers/Column";
 const PAGE_SIZE = 20;
 
 function Movies() {
+  const [movieFilter, setMovieFilter] = useState("popularity.desc");
+
   const dispatch = useDispatch();
   const movieReducer = useSelector(
     (state) => state?.entities?.movies?.movieList
@@ -58,11 +60,12 @@ function Movies() {
   };
 
   const handleDropDownChange = (e) => {
-    dispatch(setMovieFilters(e.currentTarget.value));
+    setMovieFilter(e.currentTarget.value);
   };
 
   const handleFilterClick = () => {
     dispatch(setMoviePage(1));
+    dispatch(setMovieFilters(movieFilter));
     dispatch(getFilteredMovie({ ...movieParams, page: 1 }));
   };
 
