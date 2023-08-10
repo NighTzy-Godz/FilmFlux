@@ -1,0 +1,17 @@
+@media screen and (min-width: 1200px) {
+  .all_people .title h1 {
+    color: var(--main-color);
+    margin-bottom: 30px;
+  }
+
+  .all_people_container {
+    /* width: 85%; */
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+  }
+
+  .all_people .movies_container .column {
+    width: 25%;
+  }
+}

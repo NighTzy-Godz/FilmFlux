@@ -32,7 +32,6 @@ MovieCard.propTypes = {
     backdrop_path: PropTypes.string,
     poster_path: PropTypes.string,
     release_date: PropTypes.string,
-
     original_title: PropTypes.string.isRequired,
   }),
 };

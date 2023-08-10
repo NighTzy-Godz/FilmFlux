@@ -43,4 +43,12 @@ export const getCastDetail = (castId) =>
     onSuccess: personDetailsRecieved.type,
     onError: peopleRequestFailed.type,
   });
+
+export const getPopularPeople = () =>
+  apiCallBegan({
+    urls: [`${personUrl}/popular`],
+    onStart: peopleRequested.type,
+    onSuccess: peopleListRecieved.type,
+    onError: peopleRequestFailed.type,
+  });
 export default slice.reducer;

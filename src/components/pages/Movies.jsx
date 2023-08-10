@@ -18,6 +18,7 @@ import ReactPaginate from "react-paginate";
 import calculateItems from "../../utils/calculateItems";
 
 import Filter from "../common/Filter";
+import Column from "../containers/Column";
 
 const PAGE_SIZE = 20;
 
@@ -41,9 +42,11 @@ function Movies() {
 
   const renderMovieCards = movies?.map((movie) => {
     return (
-      <div className="column" key={movie.id}>
-        <MovieCard data={movie} />
-      </div>
+      <React.Fragment key={movie.id}>
+        <Column col={4}>
+          <MovieCard data={movie} />
+        </Column>
+      </React.Fragment>
     );
   });
 
