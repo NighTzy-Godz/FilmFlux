@@ -59,12 +59,14 @@ function Movies() {
   };
 
   const handleFilterClick = () => {
-    dispatch(getFilteredMovie(movieParams));
+    dispatch(setMoviePage(1));
+    dispatch(getFilteredMovie({ ...movieParams, page: 1 }));
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(getFilteredMovie(movieParams));
-  }, []);
+  }, [movieParams]);
 
   return (
     <PagePadding className="all_movies">
