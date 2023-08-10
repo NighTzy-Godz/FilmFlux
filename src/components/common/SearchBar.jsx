@@ -9,7 +9,7 @@ function SearchBar({ value, onSearchChange, onSearchClick }) {
         value={value}
         onChange={onSearchChange}
         onClick={onSearchClick}
-        placeholder="Search Here..."
+        placeholder="Search Movies Here..."
       />
     </React.Fragment>
   );
