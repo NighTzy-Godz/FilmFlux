@@ -16,7 +16,7 @@ function SearchSnippet({ searchResult }) {
     return () => {
       document.body.removeEventListener("click", handleBodyClick);
     };
-  });
+  }, []);
 
   const handleBodyClick = (event) => {
     if (
@@ -37,7 +37,7 @@ function SearchSnippet({ searchResult }) {
 
   return (
     <div className="search_snippet" ref={searchSnippetRef}>
-      {renderSearchCard}
+      {searchResult.length === 0 ? <p>No Results Found</p> : renderSearchCard}
     </div>
   );
 }

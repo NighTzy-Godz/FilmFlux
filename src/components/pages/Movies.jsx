@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
+import movie, {
   getFilteredMovie,
   getMoviesNextPage,
   getPopularMovies,
+  setMovieFilters,
 } from "../../store/slices/movie";
 import PagePadding from "../containers/PagePadding";
 import WidthContainer from "../containers/WidthContainer";
@@ -20,13 +21,13 @@ import Filter from "../common/Filter";
 const PAGE_SIZE = 20;
 
 function Movies() {
-  const [params, setParams] = useState({
-    sort_by: "popularity.desc",
-  });
-
   const dispatch = useDispatch();
   const movieReducer = useSelector(
     (state) => state?.entities?.movies?.movieList
+  );
+
+  const movieParams = useSelector(
+    (state) => state?.entities?.movies?.movieParams
   );
 
   const {
@@ -53,15 +54,15 @@ function Movies() {
   };
 
   const handleDropDownChange = (e) => {
-    setParams({ ...params, sort_by: e.currentTarget.value });
+    dispatch(setMovieFilters(e.currentTarget.value));
   };
 
   const handleFilterClick = () => {
-    dispatch(getFilteredMovie(params));
+    dispatch(getFilteredMovie(movieParams));
   };
 
   useEffect(() => {
-    dispatch(getPopularMovies());
+    dispatch(getFilteredMovie(movieParams));
   }, []);
 
   return (

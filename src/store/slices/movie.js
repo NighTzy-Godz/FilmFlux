@@ -4,6 +4,9 @@ import { apiCallBegan } from "../actions/apiActions";
 const slice = createSlice({
   name: "movie",
   initialState: {
+    movieParams: {
+      sort_by: "popularity.desc",
+    },
     movieList: [],
     loading: false,
     singleMovie: {},
@@ -46,10 +49,13 @@ const slice = createSlice({
     setSearchSnippet: (movie, action) => {
       movie.searchSnippetToggle = action.payload;
     },
+    setMovieFilters: (movie, action) => {
+      movie.movieParams.sort_by = action.payload;
+    },
   },
 });
 
-export const { setSearchSnippet } = slice.actions;
+export const { setMovieFilters, setSearchSnippet } = slice.actions;
 
 const {
   moviesRequested,
