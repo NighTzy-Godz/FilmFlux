@@ -3,8 +3,9 @@ import Home from "./components/pages/Home";
 import HomeLayout from "./components/pages/HomeLayout";
 import Movies from "./components/pages/Movies";
 import MovieDetails from "./components/pages/MovieDetails";
-import People from "./store/slices/people";
+
 import CastDetail from "./components/pages/CastDetail";
+import People from "./components/pages/People";
 
 function App() {
   return (

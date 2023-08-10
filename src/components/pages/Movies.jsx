@@ -5,6 +5,7 @@ import movie, {
   getMoviesNextPage,
   getPopularMovies,
   setMovieFilters,
+  setMoviePage,
 } from "../../store/slices/movie";
 import PagePadding from "../containers/PagePadding";
 import WidthContainer from "../containers/WidthContainer";
@@ -49,8 +50,8 @@ function Movies() {
   const handlePageChange = (dataPage) => {
     const { selected } = dataPage;
     const page = selected + 1;
-
-    dispatch(getMoviesNextPage({ page }));
+    dispatch(setMoviePage(page));
+    dispatch(getMoviesNextPage({ ...movieParams, page }));
   };
 
   const handleDropDownChange = (e) => {
@@ -88,6 +89,7 @@ function Movies() {
                 nextLabel="Next"
                 breakLabel="..."
                 pageCount={pageCount}
+                initialPage={movieParams.page - 1}
                 marginPagesDisplayed={2}
                 pageRangeDisplayed={5}
                 activeClassName="active"

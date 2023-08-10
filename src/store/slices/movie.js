@@ -6,6 +6,7 @@ const slice = createSlice({
   initialState: {
     movieParams: {
       sort_by: "popularity.desc",
+      page: 1,
     },
     movieList: [],
     loading: false,
@@ -52,10 +53,14 @@ const slice = createSlice({
     setMovieFilters: (movie, action) => {
       movie.movieParams.sort_by = action.payload;
     },
+    setMoviePage: (movie, action) => {
+      movie.movieParams.page = action.payload;
+    },
   },
 });
 
-export const { setMovieFilters, setSearchSnippet } = slice.actions;
+export const { setMovieFilters, setMoviePage, setSearchSnippet } =
+  slice.actions;
 
 const {
   moviesRequested,

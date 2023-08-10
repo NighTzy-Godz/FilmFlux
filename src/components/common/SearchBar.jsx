@@ -1,8 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SearchSnippet from "./SearchSnippet";
-
-import SearchIcon from "./SearchIcon";
 
 function SearchBar({ value, onSearchChange, onSearchClick }) {
   return (
