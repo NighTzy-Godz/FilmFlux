@@ -4,7 +4,7 @@ import calculateItems from "../../utils/calculateItems";
 import "../../assets/css/pages/all_people.css";
 import PagePadding from "../containers/PagePadding";
 import { useDispatch, useSelector } from "react-redux";
-import { getPopularPeople } from "../../store/slices/people";
+import { getPopularPeople, setPersonPage } from "../../store/slices/people";
 import PeopleCard from "../common/PeopleCard";
 import Column from "../containers/Column";
 import ReactPaginate from "react-paginate";
@@ -17,6 +17,10 @@ function People() {
     (state) => state.entities.people.peopleList
   );
 
+  const peopleParams = useSelector(
+    (state) => state.entities.people.peopleParams
+  );
+
   const {
     results: people,
     page: currPage,
@@ -26,8 +30,16 @@ function People() {
   const pageCount = itemCount / PAGE_SIZE;
 
   useEffect(() => {
-    dispatch(getPopularPeople());
+    dispatch(getPopularPeople(peopleParams));
   }, [dispatch]);
+
+  const handlePageChange = (dataPage) => {
+    const { selected } = dataPage;
+    const page = selected + 1;
+
+    dispatch(setPersonPage(page));
+    dispatch(getPopularPeople({ ...peopleParams, page }));
+  };
 
   const renderPeopleCard = people?.map((person) => {
     return (
@@ -51,6 +63,17 @@ function People() {
             <div className="result_container">
               <p>Showing {calculateItems(currPage, PAGE_SIZE, itemCount)}</p>
             </div>
+            <ReactPaginate
+              className="paginate"
+              previousLabel="Previous"
+              nextLabel="Next"
+              breakLabel="...."
+              pageCount={pageCount}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              activeClassName="active"
+              onPageChange={handlePageChange}
+            />
           </div>
         </div>
       </WidthContainer>

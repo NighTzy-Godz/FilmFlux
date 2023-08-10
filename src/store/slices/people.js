@@ -7,6 +7,9 @@ const slice = createSlice({
     peopleList: [],
     loading: false,
     personDetail: {},
+    peopleParams: {
+      page: 1,
+    },
   },
 
   reducers: {
@@ -25,8 +28,18 @@ const slice = createSlice({
       person.personDetail = action.payload[0];
       person.personDetail.credits = action.payload[1];
     },
+
+    setPeopleNextPage: (person, action) => {
+      person.peopleList = action.payload[0];
+    },
+
+    setPersonPage: (person, action) => {
+      person.peopleParams.page = action.payload;
+    },
   },
 });
+
+export const { setPersonPage } = slice.actions;
 
 const {
   peopleRequested,
@@ -44,11 +57,13 @@ export const getCastDetail = (castId) =>
     onError: peopleRequestFailed.type,
   });
 
-export const getPopularPeople = () =>
+export const getPopularPeople = (params) =>
   apiCallBegan({
     urls: [`${personUrl}/popular`],
+    params,
     onStart: peopleRequested.type,
     onSuccess: peopleListRecieved.type,
     onError: peopleRequestFailed.type,
   });
+
 export default slice.reducer;
