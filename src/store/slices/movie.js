@@ -42,11 +42,6 @@ const slice = createSlice({
       movie.searchResults = action.payload[0];
     },
 
-    movieFilteredRecieved: (movie, action) => {
-      movie.loading = false;
-      movie.movieList = action.payload[0];
-    },
-
     setSearchSnippet: (movie, action) => {
       movie.searchSnippetToggle = action.payload;
     },
@@ -75,13 +70,13 @@ export default slice.reducer;
 
 const movieUrl = "/movie";
 
-export const getPopularMovies = () =>
-  apiCallBegan({
-    urls: [`${movieUrl}/popular`],
-    onStart: moviesRequested.type,
-    onSuccess: movieListRecieved.type,
-    onError: moviesRequestFailed.type,
-  });
+// export const getPopularMovies = () =>
+//   apiCallBegan({
+//     urls: [`${movieUrl}/popular`],
+//     onStart: moviesRequested.type,
+//     onSuccess: movieListRecieved.type,
+//     onError: moviesRequestFailed.type,
+//   });
 
 export const getMovieDetails = (movieId) =>
   apiCallBegan({
@@ -120,6 +115,6 @@ export const getFilteredMovie = (params) =>
     urls: [`/discover/${movieUrl}`],
     params,
     onStart: moviesRequested.type,
-    onSuccess: movieFilteredRecieved.type,
+    onSuccess: movieListRecieved.type,
     onError: moviesRequestFailed.type,
   });
