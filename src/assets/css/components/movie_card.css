@@ -22,10 +22,6 @@
     border-top-right-radius: 6px;
   }
 
-  .movie_card img:hover {
-    transform: scale(1.05);
-  }
-
   .movie_card .movie_card_details {
     padding: 10px;
     min-height: 130px;

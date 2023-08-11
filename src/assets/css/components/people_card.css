@@ -23,10 +23,6 @@
     border-top-right-radius: 6px;
   }
 
-  .people_card img:hover {
-    transform: scale(1.05);
-  }
-
   .people_card_container {
     padding: 10px;
     min-height: 120px;
