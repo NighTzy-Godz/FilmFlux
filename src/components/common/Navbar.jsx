@@ -18,6 +18,7 @@ import SearchSnippet from "./SearchSnippet";
 
 function Navbar() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [initialized, setInitialized] = useState(true);
   const dispatch = useDispatch();
   const { results: searchResults } = useSelector(
     (state) => state.entities.movies.searchResults
@@ -30,13 +31,16 @@ function Navbar() {
 
   useEffect(() => {
     if (debouncedSearch) {
+      setInitialized(false);
       dispatch(getSearchedMovie(debouncedSearch));
       dispatch(setSearchSnippet(true));
-    } else {
+    } else if (!debouncedSearch && !initialized) {
       dispatch(getSearchedMovie(""));
       dispatch(setSearchSnippet(false));
     }
-  }, [debouncedSearch, dispatch]);
+  }, [debouncedSearch, dispatch, initialized]);
+
+  console.log(debouncedSearch);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.currentTarget.value);
