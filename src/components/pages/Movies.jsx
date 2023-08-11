@@ -23,7 +23,7 @@ const PAGE_SIZE = 20;
 
 function Movies() {
   const [movieFilter, setMovieFilter] = useState("popularity.desc");
-  const [initialized, setInitialized] = useState(true);
+
   const dispatch = useDispatch();
   const movieReducer = useSelector(
     (state) => state?.entities?.movies?.movieList
@@ -52,13 +52,10 @@ function Movies() {
   });
 
   const handlePageChange = (dataPage) => {
-    if (!initialized) {
-      console.log("Will run");
-      const { selected } = dataPage;
-      const page = selected + 1;
-      dispatch(setMoviePage(page));
-      dispatch(getMoviesNextPage({ ...movieParams, page }));
-    }
+    const { selected } = dataPage;
+    const page = selected + 1;
+    dispatch(setMoviePage(page));
+    dispatch(getMoviesNextPage({ ...movieParams, page }));
   };
 
   const handleDropDownChange = (e) => {
@@ -66,16 +63,16 @@ function Movies() {
   };
 
   const handleFilterClick = () => {
+    console.log(movieFilter);
     dispatch(setMoviePage(1));
     dispatch(setMovieFilters(movieFilter));
-    dispatch(getFilteredMovie({ ...movieParams, page: 1 }));
+    // dispatch(getFilteredMovie({ ...movieParams, page: 1 }));
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getFilteredMovie(movieParams));
-    setInitialized(false);
-  }, []);
+  }, [movieParams]);
 
   return (
     <PagePadding className="all_movies">
@@ -100,7 +97,7 @@ function Movies() {
                 nextLabel="Next"
                 breakLabel="..."
                 pageCount={pageCount}
-                initialPage={movieParams.page - 1}
+                forcePage={currPage - 1}
                 marginPagesDisplayed={2}
                 pageRangeDisplayed={5}
                 activeClassName="active"
