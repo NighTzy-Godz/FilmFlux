@@ -27,10 +27,17 @@ function SearchSnippet({ searchResult }) {
     }
   };
 
+  const handleSnippetCardClick = () => {
+    dispatch(setSearchSnippet(false));
+  };
+
   const renderSearchCard = searchResult?.map((result) => {
     return (
       <React.Fragment key={result.id}>
-        <SearchSnippetCard data={result} />
+        <SearchSnippetCard
+          data={result}
+          onSnippetClick={handleSnippetCardClick}
+        />
       </React.Fragment>
     );
   });

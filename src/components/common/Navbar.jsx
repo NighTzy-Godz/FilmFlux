@@ -29,16 +29,16 @@ function Navbar() {
   const { snippetResult } = useSearchSnippetResult(searchResults);
   const debouncedSearch = useDebounce(searchTerm, 1500);
 
-  // useEffect(() => {
-  //   if (debouncedSearch) {
-  //     setInitialized(false);
-  //     dispatch(getSearchedMovie(debouncedSearch));
-  //     dispatch(setSearchSnippet(true));
-  //   } else if (!debouncedSearch && !initialized) {
-  //     dispatch(getSearchedMovie(""));
-  //     dispatch(setSearchSnippet(false));
-  //   }
-  // }, [debouncedSearch, dispatch, initialized]);
+  useEffect(() => {
+    if (debouncedSearch) {
+      setInitialized(false);
+      dispatch(getSearchedMovie(debouncedSearch));
+      dispatch(setSearchSnippet(true));
+    } else if (!debouncedSearch && !initialized) {
+      dispatch(getSearchedMovie(""));
+      dispatch(setSearchSnippet(false));
+    }
+  }, [debouncedSearch, dispatch, initialized]);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.currentTarget.value);
