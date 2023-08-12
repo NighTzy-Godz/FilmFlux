@@ -1,37 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import movie, {
+import {
   getFilteredMovie,
   getMoviesNextPage,
   setMovieFilters,
   setMoviePage,
 } from "../../store/slices/movie";
-import PagePadding from "../containers/PagePadding";
-import WidthContainer from "../containers/WidthContainer";
-import MovieCard from "../common/MovieCard";
-
-import "../../assets/css/pages/all_movies.css";
-import "../../assets/css/components/pagination.css";
-
 import ReactPaginate from "react-paginate";
 import calculateItems from "../../utils/calculateItems";
 
+import PagePadding from "../containers/PagePadding";
+import WidthContainer from "../containers/WidthContainer";
+import MovieCard from "../common/MovieCard";
 import Filter from "../common/Filter";
 import Column from "../containers/Column";
+
+import "../../assets/css/pages/all_movies.css";
+import "../../assets/css/components/pagination.css";
 
 const PAGE_SIZE = 20;
 
 function Movies() {
   const [movieFilter, setMovieFilter] = useState("popularity.desc");
-
   const dispatch = useDispatch();
-  const movieReducer = useSelector(
-    (state) => state?.entities?.movies?.movieList
-  );
 
-  const movieParams = useSelector(
-    (state) => state?.entities?.movies?.movieParams
-  );
+  const movieReducer = useSelector((state) => state.entities.movies.movieList);
+
+  const movieParams = useSelector((state) => state.entities.movies.movieParams);
 
   const {
     results: movies,
@@ -39,20 +34,15 @@ function Movies() {
     total_results: itemCount,
   } = movieReducer;
 
-  const pageCount = itemCount / PAGE_SIZE;
+  const pageCount = Math.ceil(itemCount / PAGE_SIZE);
 
-  const renderMovieCards = movies?.map((movie) => {
-    return (
-      <React.Fragment key={movie.id}>
-        <Column col={4}>
-          <MovieCard data={movie} />
-        </Column>
-      </React.Fragment>
-    );
-  });
+  const renderMovieCards = movies?.map((movie) => (
+    <Column col={4} key={movie.id}>
+      <MovieCard data={movie} />
+    </Column>
+  ));
 
-  const handlePageChange = (dataPage) => {
-    const { selected } = dataPage;
+  const handlePageChange = ({ selected }) => {
     const page = selected + 1;
     dispatch(setMoviePage(page));
     dispatch(getMoviesNextPage({ ...movieParams, page }));
@@ -63,7 +53,6 @@ function Movies() {
   };
 
   const handleFilterClick = () => {
-    console.log(movieFilter);
     dispatch(setMoviePage(1));
     dispatch(setMovieFilters(movieFilter));
     dispatch(
@@ -74,7 +63,7 @@ function Movies() {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getFilteredMovie(movieParams));
-  }, []);
+  }, [dispatch, movieParams]);
 
   return (
     <PagePadding className="all_movies">
