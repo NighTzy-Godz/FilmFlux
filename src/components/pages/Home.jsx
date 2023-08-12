@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-
-import WidthContainer from "../containers/WidthContainer";
-
 import { useDispatch, useSelector } from "react-redux";
+import WidthContainer from "../containers/WidthContainer";
 import { getHomeMovies } from "../../store/slices/movie";
 import formatTime from "../../utils/formatTime";
 import formatDate from "../../utils/formatDate";
@@ -15,57 +13,28 @@ const BACK_DROP_BASE_IMG = "https://image.tmdb.org/t/p/original/";
 const POSTER_BASE_IMG = "https://image.tmdb.org/t/p/original/";
 
 function Home() {
-  let MOVIE_DETAIL_BACKDROP;
-  let MOVIE_DETAIL_POSTER;
-
   const dispatch = useDispatch();
-  const popular_movie = useSelector(
-    (state) => state?.entities?.movies?.homeMovies?.popular?.results[1]
-  );
-  const now_playing_movies = useSelector(
-    (state) => state?.entities?.movies?.homeMovies?.now_playing
+
+  useEffect(() => {
+    dispatch(getHomeMovies());
+  }, [dispatch]);
+
+  const { popular, now_playing, upcoming } = useSelector(
+    (state) => state.entities.movies.homeMovies
   );
 
-  const upcoming_movies = useSelector(
-    (state) => state?.entities?.movies?.homeMovies?.upcoming
-  );
-
-  const { homeMovies: nowPlayingMovies } = useHomeMovies(
-    now_playing_movies?.results
-  );
-  const { homeMovies: upComingMovies } = useHomeMovies(
-    upcoming_movies?.results
-  );
-
-  const renderNowPlayingMovies = nowPlayingMovies?.map((recom) => {
-    const { id, poster_path, title } = recom;
-    const data = {
-      id,
-      profile_path: poster_path,
-      original_name: title,
-    };
-
-    return (
-      <React.Fragment key={recom.id}>
-        <MovieCastCard data={data} />
+  const renderMovies = (movies) =>
+    movies?.results.map((movie) => (
+      <React.Fragment key={movie.id}>
+        <MovieCastCard
+          data={{
+            id: movie.id,
+            profile_path: movie.poster_path,
+            original_name: movie.title,
+          }}
+        />
       </React.Fragment>
-    );
-  });
-
-  const renderUpComingMovies = upComingMovies?.map((recom) => {
-    const { id, poster_path, title } = recom;
-    const data = {
-      id,
-      profile_path: poster_path,
-      original_name: title,
-    };
-
-    return (
-      <React.Fragment key={recom.id}>
-        <MovieCastCard data={data} />
-      </React.Fragment>
-    );
-  });
+    ));
 
   const {
     backdrop_path,
@@ -73,23 +42,20 @@ function Home() {
     release_date,
     original_title,
     overview,
-
     vote_average,
-  } = popular_movie || {};
+  } = popular?.results[1] || {};
 
-  if (backdrop_path || poster_path) {
-    MOVIE_DETAIL_BACKDROP = {
-      background: `linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url(${
-        BACK_DROP_BASE_IMG + backdrop_path
-      })`,
-    };
+  const MOVIE_DETAIL_BACKDROP =
+    backdrop_path || poster_path
+      ? {
+          background: `linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url(${
+            BACK_DROP_BASE_IMG + backdrop_path
+          })`,
+        }
+      : {};
 
-    MOVIE_DETAIL_POSTER = `${POSTER_BASE_IMG + poster_path}`;
-  }
+  const MOVIE_DETAIL_POSTER = `${POSTER_BASE_IMG + poster_path}`;
 
-  useEffect(() => {
-    dispatch(getHomeMovies());
-  }, [dispatch]);
   return (
     <React.Fragment>
       <div className="movie_details" style={MOVIE_DETAIL_BACKDROP}>
@@ -115,7 +81,6 @@ function Home() {
                 <p> {formatDate(release_date)}</p>
               </div>
             </div>
-
             <div className="movie_overview">
               <h1>Overview</h1>
               <p>{overview}</p>
@@ -123,18 +88,18 @@ function Home() {
           </div>
         </WidthContainer>
       </div>
-
       <div className="home_movie_row">
         <WidthContainer>
           <h1>Now Playing Movies</h1>
-          <div className="home_movie_container">{renderNowPlayingMovies}</div>
+          <div className="home_movie_container">
+            {renderMovies(now_playing)}
+          </div>
         </WidthContainer>
       </div>
-
       <div className="home_movie_row">
         <WidthContainer>
           <h1>Upcoming Movies</h1>
-          <div className="home_movie_container">{renderUpComingMovies}</div>
+          <div className="home_movie_container">{renderMovies(upcoming)}</div>
         </WidthContainer>
       </div>
     </React.Fragment>
