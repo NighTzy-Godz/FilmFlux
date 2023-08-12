@@ -54,10 +54,6 @@ function Navbar() {
     }
   };
 
-  const handleSearchButtonClick = () => {
-    console.log("I am clicked");
-  };
-
   const handleNavToggle = () => {
     setNavToggle(!navToggle);
   };
@@ -92,7 +88,6 @@ function Navbar() {
                 onSearchChange={handleSearchChange}
                 onSearchClick={handleSearchInputClick}
               />
-              <SearchIcon onSearchClick={handleSearchButtonClick} />
             </SearchBarContainer>
             {searchSnippetToggle && (
               <SearchSnippet searchResult={snippetResult} />

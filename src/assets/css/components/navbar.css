@@ -85,7 +85,7 @@
 
   .navToggle i {
     color: var(--main-color);
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .navbar .logo {
@@ -94,14 +94,14 @@
   }
 
   .navbar .logo img {
-    width: 30px;
+    width: 32px;
     /* margin-top: 5px; */
-    height: 30px;
+    height: 32px;
     margin-right: 5px;
   }
 
   .navbar .logo h1 {
-    font-size: 25px;
+    font-size: 27px;
     color: var(--main-color) !important;
   }
 
@@ -119,9 +119,11 @@
     margin-bottom: 15px;
   }
 
-  .navbar .nav_links a {
-    font-size: 16px;
+  .navbar .nav_links ul a {
+    display: block;
+    font-size: 18px;
     transition: all 0.3s;
+    margin-bottom: 5px;
   }
 
   .navbar .nav_links a:hover {

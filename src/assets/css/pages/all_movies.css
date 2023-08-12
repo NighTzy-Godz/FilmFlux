@@ -17,13 +17,17 @@
     flex-wrap: wrap;
     padding: 0 1rem;
   }
+
+  .all_movies .movies_container .column {
+    width: 25%;
+  }
 }
 
 @media screen and (max-width: 575px) {
   .all_movies .title h1 {
     color: var(--main-color);
     margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 23px;
   }
 
   .all_movies_container {
@@ -35,7 +39,7 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    padding: 0 1rem;
+
     gap: 10px;
   }
 
