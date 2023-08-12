@@ -22,15 +22,11 @@ const BACK_DROP_BASE_IMG = "https://image.tmdb.org/t/p/original/";
 const POSTER_BASE_IMG = "https://image.tmdb.org/t/p/original/";
 
 function MovieDetails() {
-  let MOVIE_DETAIL_BACKDROP;
-  let MOVIE_DETAIL_POSTER;
-
   const { movieId } = useParams();
   const dispatch = useDispatch();
-  const movieReducer = useSelector((state) => state?.entities?.movies);
-  const { loading } = movieReducer;
-
-  const movieDetails = movieReducer?.singleMovie;
+  const { singleMovie, loading } = useSelector(
+    (state) => state.entities.movies
+  );
 
   const {
     backdrop_path,
@@ -48,62 +44,41 @@ function MovieDetails() {
     status,
     recommendations,
     casts = [],
-  } = movieDetails;
+  } = singleMovie;
 
   const { movieCasts } = useMovieCasts(casts);
   const { movieRecommendation } = useMovieRecommendation(
     recommendations?.results
   );
 
-  if (backdrop_path || poster_path) {
-    MOVIE_DETAIL_BACKDROP = {
-      background: `linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url(${
-        BACK_DROP_BASE_IMG + backdrop_path
-      })`,
-    };
+  const MOVIE_DETAIL_BACKDROP =
+    backdrop_path || poster_path
+      ? {
+          background: `linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)), url(${
+            BACK_DROP_BASE_IMG + backdrop_path
+          })`,
+        }
+      : {};
 
-    MOVIE_DETAIL_POSTER = `${POSTER_BASE_IMG + poster_path}`;
-  }
+  const MOVIE_DETAIL_POSTER = `${POSTER_BASE_IMG + poster_path}`;
 
-  const renderGenres = genres?.map((genre) => {
-    return (
-      <li key={genre.id}>
-        <p>{genre.name} | </p>
-      </li>
-    );
-  });
+  const renderGenres = genres?.map((genre) => (
+    <li key={genre.id}>
+      <p>{genre.name} | </p>
+    </li>
+  ));
 
-  const renderCasts = movieCasts?.map((cast) => {
-    const { id, profile_path, original_name, character } = cast;
-    const data = {
-      id,
-      profile_path,
-      original_name,
-      character,
-    };
+  const renderCasts = movieCasts?.map((cast) => (
+    <React.Fragment key={cast.id}>
+      <MovieCastCard data={cast} />
+    </React.Fragment>
+  ));
 
-    return (
-      <React.Fragment key={cast.id}>
-        <MovieCastCard data={data} />
-      </React.Fragment>
-    );
-  });
-
-  const renderMovieRecom = movieRecommendation?.map((recom) => {
-    const { id, poster_path, title, original_name } = recom;
-    const data = {
-      id,
-      poster_path,
-      title,
-      original_name,
-    };
-
-    return (
-      <React.Fragment key={recom.id}>
-        <MovieRecomCard data={data} />
-      </React.Fragment>
-    );
-  });
+  const renderMovieRecom = movieRecommendation?.map((recom) => (
+    <React.Fragment key={recom.id}>
+      <MovieRecomCard data={recom} />
+    </React.Fragment>
+  ));
 
   useEffect(() => {
     dispatch(getMovieDetails(movieId));
@@ -141,7 +116,7 @@ function MovieDetails() {
               </div>
               <div className="movie_subdDetails_container">
                 <span>
-                  <p>Ratings:</p>
+                  <p>Runtime:</p>
                 </span>
                 <p> {formatTime(runtime)}</p>
               </div>
@@ -169,7 +144,6 @@ function MovieDetails() {
           <div className="movie_subContent_container">
             <div className="movie_casts_container">
               {renderCasts}
-
               <Link className="see_all_casts">See All Casts</Link>
             </div>
             <div className="movie_other_content">
@@ -187,9 +161,7 @@ function MovieDetails() {
                   path={socials?.twitter_id}
                 />
               </FlexCombo>
-
               <Divider />
-
               <div className="movie_subInfo_container">
                 <MovieSubInfo
                   title="Status"
