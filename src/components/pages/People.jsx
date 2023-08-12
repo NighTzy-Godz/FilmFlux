@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import ReactPaginate from "react-paginate";
 import WidthContainer from "../containers/WidthContainer";
 import calculateItems from "../../utils/calculateItems";
 import "../../assets/css/pages/all_people.css";
 import PagePadding from "../containers/PagePadding";
-import { useDispatch, useSelector } from "react-redux";
 import { getPopularPeople, setPersonPage } from "../../store/slices/people";
 import PeopleCard from "../common/PeopleCard";
 import Column from "../containers/Column";
-import ReactPaginate from "react-paginate";
 
 const PAGE_SIZE = 20;
 
@@ -16,7 +16,6 @@ function People() {
   const peopleReducer = useSelector(
     (state) => state.entities.people.peopleList
   );
-
   const peopleParams = useSelector(
     (state) => state.entities.people.peopleParams
   );
@@ -26,30 +25,23 @@ function People() {
     page: currPage,
     total_results: itemCount,
   } = peopleReducer;
-
-  const pageCount = itemCount / PAGE_SIZE;
+  const pageCount = Math.ceil(itemCount / PAGE_SIZE);
 
   useEffect(() => {
     dispatch(getPopularPeople(peopleParams));
-  }, [dispatch]);
+  }, [dispatch, peopleParams]);
 
-  const handlePageChange = (dataPage) => {
-    const { selected } = dataPage;
+  const handlePageChange = ({ selected }) => {
     const page = selected + 1;
-
     dispatch(setPersonPage(page));
     dispatch(getPopularPeople({ ...peopleParams, page }));
   };
 
-  const renderPeopleCard = people?.map((person) => {
-    return (
-      <React.Fragment key={person.id}>
-        <Column col={5}>
-          <PeopleCard data={person} />
-        </Column>
-      </React.Fragment>
-    );
-  });
+  const renderPeopleCard = people?.map((person) => (
+    <Column col={5} key={person.id}>
+      <PeopleCard data={person} />
+    </Column>
+  ));
 
   return (
     <PagePadding className="all_people">
