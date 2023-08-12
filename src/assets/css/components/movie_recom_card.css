@@ -74,12 +74,4 @@
     font-size: 14px;
     color: var(--main-color);
   }
-
-  .movie_recom_card p {
-    font-family: hind_reg;
-    line-height: 0.1;
-    padding: 10px;
-    font-size: 14px;
-    color: var(--text-color);
-  }
 }
