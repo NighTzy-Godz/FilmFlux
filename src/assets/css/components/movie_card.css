@@ -39,3 +39,43 @@
     color: var(--text-color);
   }
 }
+
+@media screen and (max-width: 575px) {
+  .movie_card {
+    display: block;
+    max-width: 100%;
+    background-color: var(--bg-color-hover);
+    margin: 0px 15px 30px 0px;
+    text-decoration: none;
+  }
+  .movie_card_img {
+    display: block;
+    overflow: hidden;
+  }
+
+  .movie_card img {
+    display: block;
+    z-index: 1;
+    max-width: 100%;
+    transition: all 0.3s;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+
+  .movie_card .movie_card_details {
+    padding: 10px;
+    min-height: 80px;
+  }
+
+  .movie_card .movie_card_details h3 {
+    font-family: bungee;
+    font-size: 17px;
+    color: var(--main-color);
+  }
+
+  .movie_card .movie_card_details p {
+    font-family: hind_reg;
+    font-size: 14px;
+    color: var(--text-color);
+  }
+}

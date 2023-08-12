@@ -37,3 +37,46 @@
     border: none;
   }
 }
+
+@media screen and (max-width: 575px) {
+  .filter {
+    background-color: var(--bg-color-hover);
+    border-radius: 5px;
+    padding: 10px 20px;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+
+  .filter h2 {
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
+
+  .filter .drop_down {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filter .drop_down label {
+    font-family: hind_reg;
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 3px;
+  }
+
+  .filter .drop_down select {
+    padding: 6px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-family: hind_reg;
+  }
+
+  .filter .button {
+    width: 100%;
+    margin: 0 auto;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    font-size: 13px;
+  }
+}

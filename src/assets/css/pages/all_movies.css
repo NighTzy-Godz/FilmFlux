@@ -18,3 +18,28 @@
     padding: 0 1rem;
   }
 }
+
+@media screen and (max-width: 575px) {
+  .all_movies .title h1 {
+    color: var(--main-color);
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  .all_movies_container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .all_movies .movies_container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+    gap: 10px;
+  }
+
+  .all_movies .movies_container .column {
+    width: 100%;
+  }
+}

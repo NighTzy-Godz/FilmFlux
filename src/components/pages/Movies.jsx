@@ -90,7 +90,7 @@ function Movies() {
                 pageCount={pageCount}
                 forcePage={currPage - 1}
                 marginPagesDisplayed={2}
-                pageRangeDisplayed={5}
+                pageRangeDisplayed={3}
                 activeClassName="active"
                 onPageChange={handlePageChange}
               />

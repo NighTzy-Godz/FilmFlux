@@ -22,3 +22,36 @@
     border-radius: 3px;
   }
 }
+
+@media screen and (max-width: 575px) {
+  .pagination_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pagination_container .result_container p {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .pagination_container .paginate {
+    display: flex;
+  }
+
+  .pagination_container .paginate li:first-child {
+    padding-left: 0;
+  }
+
+  .pagination_container .paginate li {
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  .pagination_container .paginate li.active {
+    background-color: var(--main-color);
+    border: 1px solid var(--main-color);
+    border-radius: 3px;
+  }
+}

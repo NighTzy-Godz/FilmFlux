@@ -1,8 +1,8 @@
 import React from "react";
 import column_map from "../../data/column_map";
 import PropTypes from "prop-types";
-function Column({ col, children }) {
-  return <div style={{ width: `${column_map[col].width}` }}> {children}</div>;
+function Column({ children }) {
+  return <div className="column">{children}</div>;
 }
 
 Column.propTypes = {
