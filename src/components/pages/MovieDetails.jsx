@@ -142,10 +142,7 @@ function MovieDetails() {
             <h1>Major Casts</h1>
           </div>
           <div className="movie_subContent_container">
-            <div className="movie_casts_container">
-              {renderCasts}
-              <Link className="see_all_casts">See All Casts</Link>
-            </div>
+            <div className="movie_casts_container">{renderCasts}</div>
             <div className="movie_other_content">
               <FlexCombo className="movie_socials">
                 <MovieSocial

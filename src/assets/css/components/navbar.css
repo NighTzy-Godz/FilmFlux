@@ -90,6 +90,7 @@
 
   .navbar .logo {
     display: flex;
+    width: fit-content;
     margin-bottom: 10px;
   }
 
