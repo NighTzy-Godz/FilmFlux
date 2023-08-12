@@ -14,6 +14,7 @@ const slice = createSlice({
     searchResults: [],
     searchTerm: "",
     searchSnippetToggle: false,
+    homeMovies: {},
   },
   reducers: {
     moviesRequested: (movie, action) => {
@@ -42,6 +43,13 @@ const slice = createSlice({
       movie.searchResults = action.payload[0];
     },
 
+    movieHomeRecieved: (movie, action) => {
+      movie.loading = false;
+      movie.homeMovies.popular = action.payload[0];
+      movie.homeMovies.now_playing = action.payload[1];
+      movie.homeMovies.upcoming = action.payload[2];
+    },
+
     setSearchSnippet: (movie, action) => {
       movie.searchSnippetToggle = action.payload;
     },
@@ -63,6 +71,7 @@ const {
   movieListRecieved,
   movieDetailsRecieved,
   movieSearchedRecieved,
+  movieHomeRecieved,
   movieFilteredRecieved,
 } = slice.actions;
 
@@ -116,5 +125,18 @@ export const getFilteredMovie = (params) =>
     params,
     onStart: moviesRequested.type,
     onSuccess: movieListRecieved.type,
+    onError: moviesRequestFailed.type,
+  });
+
+export const getHomeMovies = () =>
+  apiCallBegan({
+    urls: [
+      `${movieUrl}/popular`,
+      `${movieUrl}/now_playing`,
+      `${movieUrl}/upcoming`,
+    ],
+
+    onStart: moviesRequested.type,
+    onSuccess: movieHomeRecieved.type,
     onError: moviesRequestFailed.type,
   });

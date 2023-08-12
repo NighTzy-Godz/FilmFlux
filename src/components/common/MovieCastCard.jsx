@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../../assets/css/components/movie_cast_card.css";
 
 function MovieCastCard({ data }) {
-  const { id, profile_path, original_name, character } = data;
+  const { id, profile_path, original_name, character, hasName } = data;
   const profile_poster_path = "https://image.tmdb.org/t/p/original";
 
   return (
@@ -27,6 +27,7 @@ MovieCastCard.propTypes = {
     profile_path: PropTypes.string.isRequired,
     character: PropTypes.string.isRequired,
     original_name: PropTypes.string.isRequired,
+    hasName: PropTypes.bool,
   }),
 };
 
