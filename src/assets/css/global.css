@@ -97,6 +97,18 @@ li {
     padding: 40px 0px;
     background-color: var(--bg-color);
   }
+}
+
+@media screen and (max-width: 575px) {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .page_padding {
+    padding: 40px 0px;
+    background-color: var(--bg-color);
+  }
   .home {
     background: var(--bg-color);
   }

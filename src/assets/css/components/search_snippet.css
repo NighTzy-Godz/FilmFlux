@@ -9,3 +9,15 @@
     max-height: 300px;
   }
 }
+
+@media screen and (max-width: 575px) {
+  .search_snippet {
+    position: absolute;
+    width: 100%;
+    background-color: var(--bg-color-hover);
+    border-radius: 5px;
+    margin-top: 3px;
+    overflow-y: auto;
+    max-height: 150px;
+  }
+}

@@ -19,6 +19,8 @@ import SearchSnippet from "./SearchSnippet";
 function Navbar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [initialized, setInitialized] = useState(true);
+  const [navToggle, setNavToggle] = useState(false);
+
   const dispatch = useDispatch();
   const { results: searchResults } = useSelector(
     (state) => state.entities.movies.searchResults
@@ -56,27 +58,34 @@ function Navbar() {
     console.log("I am clicked");
   };
 
+  const handleNavToggle = () => {
+    setNavToggle(!navToggle);
+  };
+
   return (
     <div className="navbar">
       <WidthContainer>
-        <FlexCombo>
+        <div className="nav_container">
           <Link className="logo" to="/">
             <img src={LOGO} alt="" />
             <h1>FilmFlux</h1>
           </Link>
 
-          <ul className="nav_links">
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/movies">Movies</NavLink>
-            </li>
-            <li>
-              <NavLink to="/people">People</NavLink>
-            </li>
-          </ul>
-          <div className="nav_search">
+          <div className={`nav_links ${navToggle ? "show" : ""}`}>
+            <ul>
+              <li>
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li>
+                <NavLink to="/movies">Movies</NavLink>
+              </li>
+              <li>
+                <NavLink to="/people">People</NavLink>
+              </li>
+            </ul>
+          </div>
+
+          <div className={`nav_search ${navToggle ? "show" : ""}`}>
             <SearchBarContainer>
               <SearchBar
                 value={searchTerm}
@@ -89,7 +98,11 @@ function Navbar() {
               <SearchSnippet searchResult={snippetResult} />
             )}
           </div>
-        </FlexCombo>
+
+          <div className="navToggle">
+            <i class="fa-solid fa-bars" onClick={handleNavToggle}></i>
+          </div>
+        </div>
       </WidthContainer>
     </div>
   );
