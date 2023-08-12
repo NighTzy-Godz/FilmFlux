@@ -38,7 +38,7 @@ function People() {
   };
 
   const renderPeopleCard = people?.map((person) => (
-    <Column col={5} key={person.id}>
+    <Column key={person.id}>
       <PeopleCard data={person} />
     </Column>
   ));
@@ -62,7 +62,7 @@ function People() {
               breakLabel="...."
               pageCount={pageCount}
               marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
+              pageRangeDisplayed={3}
               activeClassName="active"
               onPageChange={handlePageChange}
             />

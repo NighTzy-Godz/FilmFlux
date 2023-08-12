@@ -188,6 +188,7 @@
   .movie_details_poster img {
     max-width: 100%;
     border-radius: 8px;
+    margin-bottom: 20px;
   }
 
   .movie_details_content {
@@ -210,7 +211,7 @@
 
   .movie_subdDetails_container {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
 
     width: 100%;
   }
@@ -227,7 +228,12 @@
 
   .movie_subdDetails_container ul {
     display: flex;
-    align-items: center;
+
+    flex-wrap: wrap;
+  }
+
+  .movie_subdDetails_container ul li {
+    line-height: 1.2;
   }
 
   .movie_details .movie_overview h1 {

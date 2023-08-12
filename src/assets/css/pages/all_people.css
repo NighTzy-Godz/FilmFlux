@@ -15,3 +15,21 @@
     width: 25%;
   }
 }
+
+@media screen and (max-width: 575px) {
+  .all_people .title h1 {
+    font-size: 23px;
+    color: var(--main-color);
+    margin-bottom: 20px;
+  }
+
+  .all_people_container {
+    /* width: 85%; */
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .all_people .movies_container .column {
+    width: 100%;
+  }
+}

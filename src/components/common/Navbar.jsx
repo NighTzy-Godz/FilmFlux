@@ -95,7 +95,7 @@ function Navbar() {
           </div>
 
           <div className="navToggle">
-            <i class="fa-solid fa-bars" onClick={handleNavToggle}></i>
+            <i className="fa-solid fa-bars" onClick={handleNavToggle}></i>
           </div>
         </div>
       </WidthContainer>
