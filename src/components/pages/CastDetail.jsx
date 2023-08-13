@@ -7,6 +7,7 @@ import formatDate from "../../utils/formatDate";
 import "../../assets/css/pages/cast_details.css";
 import WidthContainer from "../containers/WidthContainer";
 import Divider from "../containers/Divider";
+import Loader from "../common/Loader";
 
 const POSTER_BASE_IMG = "https://image.tmdb.org/t/p/original/";
 
@@ -16,6 +17,8 @@ function CastDetail() {
   const castDetails = useSelector(
     (state) => state.entities.people.personDetail
   );
+
+  const loading = useSelector((state) => state.entities.people.loading);
 
   const {
     birthday,
@@ -48,6 +51,8 @@ function CastDetail() {
   useEffect(() => {
     dispatch(getCastDetail(parseInt(castId)));
   }, [castId]);
+
+  if (loading) return <Loader />;
 
   return (
     <div className="person_details">

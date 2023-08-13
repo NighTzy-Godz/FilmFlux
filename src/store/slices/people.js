@@ -26,6 +26,7 @@ const slice = createSlice({
       people.peopleList = action.payload[0];
     },
     personDetailsRecieved: (person, action) => {
+      person.loading = false;
       person.personDetail = action.payload[0];
       person.personDetail.credits = action.payload[1];
     },
