@@ -41,6 +41,49 @@
   }
 }
 
+@media screen and (575px <= width <= 767px) {
+  .movie_recom_card {
+    width: 100%;
+
+    border-radius: 8px;
+    background-color: var(--bg-color-hover);
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .movie_recom_img {
+    overflow: hidden;
+  }
+
+  .movie_recom_card img {
+    width: 100%;
+    transition: all 0.3s;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .movie_recom_card img:hover {
+    transform: scale(1.05);
+  }
+
+  .movie_recom_card h4 {
+    font-family: hind_reg;
+    padding: 4px 7px 12px 7px;
+    font-size: 15px;
+    color: var(--main-color);
+  }
+
+  .movie_recom_card p {
+    font-family: hind_reg;
+    line-height: 0.1;
+    padding: 10px;
+    font-size: 15px;
+    color: var(--text-color);
+  }
+}
+
 @media screen and (max-width: 575px) {
   .movie_recom_card {
     width: 100%;
