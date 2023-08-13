@@ -2,11 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import WidthContainer from "../containers/WidthContainer";
 import { getHomeMovies } from "../../store/slices/movie";
-import formatTime from "../../utils/formatTime";
+
 import formatDate from "../../utils/formatDate";
 import "../../assets/css/pages/home.css";
-import useHomeMovies from "../../hooks/useHomeMovies";
-import MovieRecomCard from "../common/MovieRecomCard";
+
 import MovieCastCard from "../common/MovieCastCard";
 import Loader from "../common/Loader";
 
