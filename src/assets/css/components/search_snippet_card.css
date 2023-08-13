@@ -26,6 +26,36 @@
     z-index: 1000;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .search_snippet_card {
+    display: flex;
+
+    height: 55px;
+    position: relative;
+    border-bottom: 1px solid var(--bg-color);
+  }
+
+  .search_snippet_card:last-child {
+    margin-bottom: 0;
+  }
+
+  .search_snippet_card .img img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+
+  .search_snippet_card p {
+    margin-top: 10px;
+    font-size: 13.5px;
+    line-height: 1.2;
+    position: relative !important;
+    z-index: 1000;
+  }
+}
+
 @media screen and (max-width: 575px) {
   .search_snippet_card {
     display: flex;

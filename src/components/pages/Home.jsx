@@ -8,6 +8,7 @@ import "../../assets/css/pages/home.css";
 import useHomeMovies from "../../hooks/useHomeMovies";
 import MovieRecomCard from "../common/MovieRecomCard";
 import MovieCastCard from "../common/MovieCastCard";
+import Loader from "../common/Loader";
 
 const BACK_DROP_BASE_IMG = "https://image.tmdb.org/t/p/original/";
 const POSTER_BASE_IMG = "https://image.tmdb.org/t/p/original/";
@@ -22,6 +23,8 @@ function Home() {
   const { popular, now_playing, upcoming } = useSelector(
     (state) => state.entities.movies.homeMovies
   );
+
+  const loading = useSelector((state) => state.entities.movies.loading);
 
   const renderMovies = (movies) =>
     movies?.results.map((movie) => (
@@ -56,6 +59,7 @@ function Home() {
 
   const MOVIE_DETAIL_POSTER = `${POSTER_BASE_IMG + poster_path}`;
 
+  if (loading) return <Loader />;
   return (
     <React.Fragment>
       <div className="movie_details" style={MOVIE_DETAIL_BACKDROP}>

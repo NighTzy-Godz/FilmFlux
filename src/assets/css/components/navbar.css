@@ -69,6 +69,84 @@
   }
 }
 
+@media screen and (575px <= width <= 767px) {
+  .navbar {
+    position: relative;
+    background-color: var(--bg-color) !important;
+    padding: 10px 0 3px 0px;
+    border-bottom: 0.5px solid var(--main-color);
+  }
+
+  .navToggle {
+    position: absolute;
+    right: 25px;
+    top: 21px;
+  }
+
+  .navToggle i {
+    color: var(--main-color);
+    font-size: 24px;
+  }
+
+  .navbar .logo {
+    display: flex;
+    width: fit-content;
+    margin-bottom: 10px;
+  }
+
+  .navbar .logo img {
+    width: 34px;
+    /* margin-top: 5px; */
+    height: 34px;
+    margin-right: 5px;
+  }
+
+  .navbar .logo h1 {
+    font-size: 29px;
+    color: var(--main-color) !important;
+  }
+
+  .nav_links {
+    display: none;
+  }
+
+  .nav_links.show {
+    display: block;
+  }
+
+  .navbar .nav_links ul {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 17px;
+  }
+
+  .navbar .nav_links ul a {
+    display: block;
+    font-size: 19px;
+    transition: all 0.3s;
+    margin-bottom: 5px;
+  }
+
+  .navbar .nav_links a:hover {
+    color: var(--main-color);
+  }
+
+  .navbar .nav_links a.active {
+    color: var(--main-color);
+  }
+
+  .nav_search {
+    display: none;
+    position: relative;
+    width: 100%;
+  }
+
+  .nav_search.show {
+    margin-bottom: 10px;
+    display: block;
+  }
+}
+
 @media screen and (max-width: 575px) {
   .navbar {
     position: relative;

@@ -11,7 +11,7 @@
     padding: 0 1rem;
   }
 
-  .all_people .movies_container .column {
+  .all_people .all_people_container .column {
     width: 25%;
   }
 }
@@ -29,7 +29,7 @@
     flex-wrap: wrap;
   }
 
-  .all_people .movies_container .column {
+  .all_people .all_people_container .column {
     width: 100%;
   }
 }
