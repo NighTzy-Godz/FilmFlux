@@ -17,6 +17,7 @@ import Column from "../containers/Column";
 
 import "../../assets/css/pages/all_movies.css";
 import "../../assets/css/components/pagination.css";
+import Loader from "../common/Loader";
 
 const PAGE_SIZE = 20;
 
@@ -25,8 +26,8 @@ function Movies() {
   const dispatch = useDispatch();
 
   const movieReducer = useSelector((state) => state.entities.movies.movieList);
-
   const movieParams = useSelector((state) => state.entities.movies.movieParams);
+  const loading = useSelector((state) => state.entities.movies.loading);
 
   const {
     results: movies,
@@ -64,6 +65,8 @@ function Movies() {
     window.scrollTo(0, 0);
     dispatch(getFilteredMovie(movieParams));
   }, [dispatch, movieParams]);
+
+  if (loading) return <Loader />;
 
   return (
     <PagePadding className="all_movies">
