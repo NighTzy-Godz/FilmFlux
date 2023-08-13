@@ -16,6 +16,25 @@
   }
 }
 
+@media screen and (575px <= width <= 767px) {
+  .all_people .title h1 {
+    font-size: 25px;
+    color: var(--main-color);
+    margin-bottom: 20px;
+  }
+
+  .all_people_container {
+    /* width: 85%; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .all_people .all_people_container .column {
+    width: 49%;
+  }
+}
+
 @media screen and (max-width: 575px) {
   .all_people .title h1 {
     font-size: 23px;
