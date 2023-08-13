@@ -22,6 +22,7 @@ const slice = createSlice({
     },
 
     peopleListRecieved: (people, action) => {
+      people.loading = false;
       people.peopleList = action.payload[0];
     },
     personDetailsRecieved: (person, action) => {

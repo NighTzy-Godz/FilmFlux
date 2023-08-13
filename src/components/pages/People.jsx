@@ -8,6 +8,7 @@ import PagePadding from "../containers/PagePadding";
 import { getPopularPeople, setPersonPage } from "../../store/slices/people";
 import PeopleCard from "../common/PeopleCard";
 import Column from "../containers/Column";
+import Loader from "../common/Loader";
 
 const PAGE_SIZE = 20;
 
@@ -19,6 +20,8 @@ function People() {
   const peopleParams = useSelector(
     (state) => state.entities.people.peopleParams
   );
+
+  const loading = useSelector((state) => state.entities.people.loading);
 
   const {
     results: people,
@@ -42,6 +45,8 @@ function People() {
       <PeopleCard data={person} />
     </Column>
   ));
+
+  if (loading) return <Loader />;
 
   return (
     <PagePadding className="all_people">
