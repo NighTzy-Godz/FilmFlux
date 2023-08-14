@@ -96,6 +96,104 @@
   }
 }
 
+@media screen and (767px <= width <= 1199px) {
+  .person_details {
+    background-color: var(--bg-color);
+    padding: 3rem 0;
+  }
+
+  .person_detail_container {
+    display: flex;
+    gap: 60px;
+  }
+
+  .person_details .detail_left {
+    width: 35%;
+  }
+
+  .person_details .detail_left img {
+    max-width: 100%;
+    height: 500px;
+    border-radius: 8px;
+
+    margin-bottom: 20px;
+  }
+
+  .person_title {
+    margin-bottom: 20px;
+  }
+
+  .person_title h1,
+  .person_name h1 {
+    color: var(--main-color);
+    line-height: 1;
+    font-size: 30px;
+  }
+
+  .person_info_container {
+    margin-bottom: 30px;
+  }
+
+  .person_info_container h3 {
+    font-family: bungee;
+    color: var(--main-color);
+
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .person_info_container p {
+    font-family: hind_reg;
+    color: var(--text-color);
+    font-size: 16px;
+  }
+
+  .person_details .detail_right {
+    width: 65%;
+  }
+
+  .person_name {
+    font-family: bungee;
+    color: var(--main-color);
+    margin-bottom: 30px;
+  }
+
+  .person_biography {
+    margin-bottom: 40px;
+  }
+
+  .person_biography h4 {
+    font-family: bungee;
+    color: var(--main-color);
+    font-size: 23px;
+  }
+
+  .person_biography p {
+    font-family: hind_reg;
+    white-space: pre-wrap;
+
+    color: var(--text-color);
+    font-size: 18px;
+  }
+
+  .person_knownFor h2 {
+    margin-bottom: 10px;
+    color: var(--main-color);
+  }
+
+  .person_knownFor_container {
+    display: grid;
+    gap: 30px;
+    overflow-x: auto;
+    grid-auto-flow: column;
+    justify-content: flex-start;
+  }
+
+  .person_knownFor_container .movie_recom_card {
+    width: 210px;
+    margin-bottom: 20px;
+  }
+}
 @media screen and (575px <= width <= 767px) {
   .person_details {
     background-color: var(--bg-color);
