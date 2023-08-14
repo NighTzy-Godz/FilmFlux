@@ -38,7 +38,7 @@
   }
 }
 
-@media screen and (767px <= width <= 992px) {
+@media screen and (767px <= width <= 1199px) {
   .filter {
     background-color: var(--bg-color-hover);
     border-radius: 5px;

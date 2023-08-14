@@ -23,6 +23,32 @@
   }
 }
 
+@media screen and (992px <= width <= 1199px) {
+  .all_movies .title h1 {
+    color: var(--main-color);
+    margin-bottom: 30px;
+  }
+
+  .all_movies_container {
+    display: flex;
+  }
+  .all_movies .filter {
+    width: 15%;
+  }
+
+  .all_movies .movies_container {
+    width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+    gap: 10px;
+  }
+
+  .all_movies .movies_container .column {
+    width: 32%;
+  }
+}
+
 @media screen and (767px <= width <= 992px) {
   .all_movies .title h1 {
     color: var(--main-color);
