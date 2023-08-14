@@ -14,11 +14,12 @@ import "../../assets/css/components/navbar.css";
 import useDebounce from "../../hooks/useDebounce";
 import useSearchSnippetResult from "../../hooks/useSearchSnippetResult";
 import SearchSnippet from "./SearchSnippet";
+import { setNavToggle } from "../../store/slices/nav";
+import navLink from "../../data/navLink";
 
 function Navbar() {
   const [searchTerm, setSearchTerm] = useState("");
   const [initialized, setInitialized] = useState(true);
-  const [navToggle, setNavToggle] = useState(false);
 
   const dispatch = useDispatch();
   const { results: searchResults } = useSelector(
@@ -27,6 +28,8 @@ function Navbar() {
   const searchSnippetToggle = useSelector(
     (state) => state.entities.movies.searchSnippetToggle
   );
+  const navToggle = useSelector((state) => state.entities.nav.navToggle);
+
   const { snippetResult } = useSearchSnippetResult(searchResults);
   const debouncedSearch = useDebounce(searchTerm, 1500);
 
@@ -54,7 +57,7 @@ function Navbar() {
   };
 
   const handleNavToggle = () => {
-    setNavToggle(!navToggle);
+    dispatch(setNavToggle(!navToggle));
   };
 
   return (
@@ -68,15 +71,11 @@ function Navbar() {
 
           <div className={`nav_links ${navToggle ? "show" : ""}`}>
             <ul>
-              <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/movies">Movies</NavLink>
-              </li>
-              <li>
-                <NavLink to="/people">People</NavLink>
-              </li>
+              {navLink.map((link) => (
+                <li key={link.id} onClick={handleNavToggle}>
+                  <NavLink to={link.path}>{link.name}</NavLink>
+                </li>
+              ))}
             </ul>
           </div>
 

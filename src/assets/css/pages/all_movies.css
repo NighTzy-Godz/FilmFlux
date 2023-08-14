@@ -23,7 +23,7 @@
   }
 }
 
-@media screen and (992px <= width <= 1199px) {
+@media screen and (993px <= width <= 1199px) {
   .all_movies .title h1 {
     color: var(--main-color);
     margin-bottom: 30px;
