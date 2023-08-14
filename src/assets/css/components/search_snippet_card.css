@@ -1,8 +1,8 @@
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 992px) {
   .search_snippet_card {
     display: flex;
     z-index: 1000;
-    height: 60px;
+    min-height: 60px;
     position: relative;
     border-bottom: 1px solid var(--bg-color);
   }
@@ -19,11 +19,12 @@
   }
 
   .search_snippet_card p {
-    margin-top: 10px;
+    /* margin-top: 10px; */
     font-size: 15px;
     line-height: 1.2;
     position: relative !important;
     z-index: 1000;
+    padding: 5px;
   }
 }
 

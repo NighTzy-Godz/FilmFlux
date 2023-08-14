@@ -1,4 +1,4 @@
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 992px) {
   .search_snippet {
     position: absolute;
     width: 100%;
@@ -18,7 +18,7 @@
     border-radius: 5px;
     margin-top: 3px;
     overflow-y: auto;
-    max-height: 240px;
+    max-height: 250px;
   }
 }
 
