@@ -28,6 +28,37 @@
   }
 }
 
+@media screen and (767px <= width <= 1199px) {
+  .cast_card {
+    width: 200px;
+    border-radius: 8px;
+    background-color: var(--bg-color-hover);
+  }
+
+  .cast_card img {
+    max-width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .cast_card_details {
+    padding: 10px;
+  }
+
+  .cast_card_details h4 {
+    font-family: bungee;
+    font-size: 18.5px;
+    line-height: 1.2;
+    color: var(--main-color);
+  }
+
+  .cast_card_details p {
+    color: var(--text-color);
+    font-family: hind_reg;
+    font-size: 15.5px;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .cast_card {
     width: 200px;

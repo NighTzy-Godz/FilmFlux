@@ -162,6 +162,138 @@
   }
 }
 
+@media screen and (767px <= width <= 1199px) {
+  .movie_details_nav {
+    background-color: var(--bg-color);
+    padding: 1rem 0rem;
+  }
+
+  .movie_details_nav a {
+    text-transform: capitalize;
+  }
+
+  .movie_details_nav i {
+    margin-right: 5px;
+  }
+
+  .movie_details {
+    height: 600px;
+    display: grid;
+    place-items: center;
+    background-position: center !important;
+    background-size: cover !important;
+  }
+
+  .movie_details_container {
+    display: flex;
+  }
+
+  .movie_details_poster {
+    display: none;
+  }
+
+  .movie_details_content .movie_title h1 {
+    font-size: 36px;
+    color: var(--main-color);
+    margin-bottom: 20px;
+  }
+
+  .movie_subDetails {
+    margin-bottom: 40px;
+  }
+
+  .movie_subdDetails_container {
+    display: flex;
+    align-items: center;
+  }
+
+  .movie_subdDetails_container p {
+    font-size: 18px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
+
+  .movie_subdDetails_container span p {
+    color: var(--main-color);
+  }
+
+  .movie_subdDetails_container ul {
+    display: flex;
+  }
+
+  .movie_details .movie_overview h1 {
+    color: var(--main-color);
+  }
+
+  .movie_details .movie_overview p {
+    font-size: 18px;
+  }
+
+  .movie_subContent {
+    background-color: var(--bg-color);
+    padding: 30px 0px;
+    padding-bottom: 80px;
+  }
+
+  .movie_casts_title h1 {
+    color: var(--main-color);
+    margin-bottom: 20px;
+  }
+
+  .movie_subContent_container .movie_casts_container {
+    width: 100%;
+    margin-bottom: 10px;
+    display: grid;
+
+    grid-auto-flow: column;
+    gap: 20px;
+    overflow: auto;
+  }
+
+  .movie_other_content {
+    width: 100%;
+    padding: 0px 3rem;
+  }
+
+  .movie_social_details a {
+    transition: all 0.3s;
+    font-size: 30px;
+  }
+
+  .movie_social_details a:hover {
+    color: var(--main-color);
+  }
+
+  .movie_subInfo_container {
+    margin-top: 20px;
+  }
+
+  .movie_sub_info {
+    margin-bottom: 20px;
+  }
+
+  .movie_sub_info h3 {
+    font-size: 25px;
+    color: var(--main-color);
+  }
+
+  .movie_sub_info p {
+    font-size: 18px;
+  }
+
+  .movie_recom {
+    background-color: var(--bg-color);
+    padding-bottom: 30px;
+  }
+
+  .movie_recom_container {
+    display: grid;
+    gap: 30px;
+    overflow-x: hidden;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media screen and (575px <= width <= 767px) {
   .movie_details_nav {
     background-color: var(--bg-color);
