@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../common/Navbar";
-import BoxShadow from "../containers/BoxShadow";
+
 import { useDispatch } from "react-redux";
 import { addUrlHistory } from "../../store/slices/urlHistory";
 

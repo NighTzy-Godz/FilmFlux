@@ -10,6 +10,18 @@
   }
 }
 
+@media screen and (767px <= width <= 992px) {
+  .search_snippet {
+    position: absolute;
+    width: 100%;
+    background-color: var(--bg-color-hover);
+    border-radius: 5px;
+    margin-top: 3px;
+    overflow-y: auto;
+    max-height: 240px;
+  }
+}
+
 @media screen and (575px <= width <= 767px) {
   .search_snippet {
     position: absolute;

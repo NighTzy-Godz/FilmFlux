@@ -94,6 +94,21 @@ li {
   }
 }
 
+@media screen and (767px <= width <= 1199px) {
+  .container {
+    width: 87%;
+    margin: 0 auto;
+  }
+
+  .page_padding {
+    padding: 30px 0px;
+    background-color: var(--bg-color);
+  }
+  .home {
+    background: var(--bg-color);
+  }
+}
+
 @media screen and (575px <= width <= 767px) {
   .container {
     width: 90%;
