@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 
 import WidthContainer from "../containers/WidthContainer";
-import FlexCombo from "../containers/FlexCombo";
+
 import SearchBarContainer from "../containers/SearchBarContainer";
 import SearchBar from "./SearchBar";
-import SearchIcon from "./SearchIcon";
 
 import { getSearchedMovie, setSearchSnippet } from "../../store/slices/movie";
 
