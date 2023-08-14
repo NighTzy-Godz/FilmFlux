@@ -19,10 +19,6 @@
   }
 
   .navbar .logo {
-    display: block;
-  }
-
-  .navbar .logo {
     display: flex;
   }
 
@@ -90,7 +86,7 @@
   }
 
   .navbar .logo {
-    display: block;
+    display: flex;
   }
 
   .navbar .logo img {
